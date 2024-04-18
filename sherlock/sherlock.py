@@ -643,6 +643,13 @@ def main():
         help="Include checking of NSFW sites from default list.",
     )
 
+    parser.add_argument(
+        "--game",
+        action="store_true",
+        default=False,
+        help="Check through only the game related sites from default list.",
+    )
+
     args = parser.parse_args()
 
     # If the user presses CTRL-C, exit gracefully without throwing errors
@@ -714,6 +721,9 @@ def main():
     if not args.nsfw:
         sites.remove_nsfw_sites()
 
+    if args.game:
+        sites.keep_game_sites()
+    
     # Create original dictionary from SitesInformation() object.
     # Eventually, the rest of the code will be updated to use the new object
     # directly, but this will glue the two pieces together.
