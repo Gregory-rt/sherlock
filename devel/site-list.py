@@ -5,13 +5,17 @@ import json
 
 # Read the data.json file
 with open("sherlock/resources/data.json", "r", encoding="utf-8") as data_file:
-    data = json.load(data_file)
+    data: dict = json.load(data_file)
+
+# Removes schema-specific keywords for proper processing
+social_networks: dict = dict(data)
+social_networks.pop('$schema', None)
 
 # Sort the social networks in alphanumeric order
-social_networks = sorted(data.items())
+social_networks: list = sorted(social_networks.items())
 
 # Write the list of supported sites to sites.md
-with open("sites.md", "w") as site_file:
+with open("../sites.md", "w") as site_file:
     site_file.write(f"## List Of Supported Sites ({len(social_networks)} Sites In Total!)\n")
     for social_network, info in social_networks:
         url_main = info["urlMain"]

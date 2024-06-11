@@ -1,8 +1,9 @@
-# Virtual Environment
+# Virtual Environments
 venv/
 bin/
 lib/
 pyvenv.cfg
+poetry.lock
 
 # Editor Configurations
 .vscode/
@@ -13,6 +14,10 @@ __pycache__/
 
 # Pip
 src/
+
+# Devel, Build, and Installation
+*.egg-info/
+dist/**
 
 # Jupyter Notebook
 .ipynb_checkpoints
